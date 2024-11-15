@@ -1,0 +1,5 @@
+Package         Version
+--------------- -------
+confluent-kafka 2.6.0
+pip             22.0.2
+setuptools      59.6.0
