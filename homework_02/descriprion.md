@@ -3,7 +3,63 @@
 
 ## Prepare 3-node kafka cluster using *KRaft*
 
-### 1. Create these properties files:
+### 1. Create 2-node claster to check leader election mechanism. For doing this, you should use the following configurations:
+
+
+
+### 2. Create these properties files:
+
+##### kafka-1 zookeper:
+
+```properties
+zookeeper.connect=localhost:2181
+zookeeper.connection.timeout.ms=3000
+
+listeners=PLAINTEXT://localhost:19092
+
+broker.id=1
+log.dirs=./tmp/kafka-1
+
+num.network.threads=1
+num.io.threads=1
+
+num.partitions=2
+default.replication.factor=2
+num.recovery.threads.per.data.dir=1
+offsets.topic.replication.factor=2
+transaction.state.log.replication.factor=2
+transaction.state.log.min.isr=1
+
+auto.create.topics.enable=true
+
+```
+
+##### kafka-2 zookeper:
+
+```properties
+zookeeper.connect=localhost:2181
+zookeeper.connection.timeout.ms=3000
+
+listeners=PLAINTEXT://localhost:29092
+
+broker.id=2
+log.dirs=./tmp/kafka-2
+
+num.network.threads=1
+num.io.threads=1
+
+num.partitions=2
+default.replication.factor=2
+num.recovery.threads.per.data.dir=1
+offsets.topic.replication.factor=2
+transaction.state.log.replication.factor=2
+transaction.state.log.min.isr=1
+
+auto.create.topics.enable=true
+
+```
+
+#### kafka-raft-1:
 ```properties
 node.id=1
 
@@ -37,6 +93,7 @@ auto.leader.rebalance.enable=true
 leader.imbalance.check.interval.seconds=10
 ```
 
+#### kafka-raft-2:
 ```properties
 node.id=2
 
@@ -70,6 +127,7 @@ auto.leader.rebalance.enable=true
 leader.imbalance.check.interval.seconds=10
 ```
 
+#### kafka-raft-3:
 ```properties
 
 node.id=3
@@ -105,9 +163,4 @@ leader.imbalance.check.interval.seconds=10
 ```
 ## Here is the result:
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <video width="640" height="360" controls>
-    <source src="result.webm" type="video/webm">
-    Your browser does not support the video tag.
-  </video>
-</div>
+### The results of this homework you can see in two short demo videos located in demo_files folder
