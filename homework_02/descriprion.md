@@ -5,10 +5,6 @@
 
 ### 1. Create 2-node claster to check leader election mechanism. For doing this, you should use the following configurations:
 
-
-
-### 2. Create these properties files:
-
 ##### kafka-1 zookeper:
 
 ```properties
@@ -58,6 +54,8 @@ transaction.state.log.min.isr=1
 auto.create.topics.enable=true
 
 ```
+
+### 2. Create these properties files:
 
 #### kafka-raft-1:
 ```properties
