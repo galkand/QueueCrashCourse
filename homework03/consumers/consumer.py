@@ -3,6 +3,7 @@ import getopt
 import struct
 from kafka import KafkaConsumer
 
+
 def usage():
     print(f"Usage: {sys.argv[0]} <bootstrap_servers> <topic> [-g <group>]")
 
